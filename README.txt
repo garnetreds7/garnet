@@ -1,3 +1,3 @@
-这是第一个git项目。
+﻿斗鱼弹幕爬虫V1.0
 
-Test | From new branch dev.
+1.完成基本功能
