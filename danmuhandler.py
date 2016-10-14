@@ -16,9 +16,7 @@ from colorprint import ColorPrint
 def str_timestamp():
     return str(int(time.time()))
 
-logger = logging.getLogger('danmu')
-logger.addHandler(logging.FileHandler('danmu.log'))
-logger.setLevel(logging.DEBUG)
+logger = logging.getLogger('filelog')
 fetched_msg_queue = Queue()
 
 class DouyuDanmuHandler:
@@ -73,7 +71,7 @@ class DouyuDanmuHandler:
                     level = re.search('\/level:(.+?)\/', content).group(1) if 'level:' in content else 'UNKNOWN'
                     client_type = re.search('\/ct:(.+?)\/', content).group(1) if 'ct:' in content else "UNKNOWN"  # ct 默认值 0 web
                     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    output_str = u'弹幕'+'|'+name+'('+sendid+')'+'|'+level+'|'+time+':'+letters
+                    output_str = u'弹幕'+'|'+name+'('+sendid+')'+'|Lv.'+level+'|'+str(time)+':'+letters
                     ColorPrint(output_str).green()
             except Exception as e:
                 logger.error(u'弹幕解析失败')
